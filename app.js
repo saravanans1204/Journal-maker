@@ -21,9 +21,17 @@ const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rho
 
 // routers
 app.get('/',(req,res)=>{
-    res.render('index',{name:'saravanan',homeStart:homeStartingContent})
+    res.render('home',{page:"Home",content:homeStartingContent})
 })
 
+app.get('/About',(req,res)=>{
+    res.render('about',{page:"About",content:aboutContent})
+})
+
+
+app.get('/Contacts',(req,res)=>{
+    res.render('contact',{page:"contact",content:contactContent})
+})
 
 
 app.listen(PORT,()=>{
