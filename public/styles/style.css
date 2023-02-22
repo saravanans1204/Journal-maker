@@ -10,7 +10,10 @@
   padding: 0;
   box-sizing: border-box;
   margin: 0;
-  overflow-x: hidden;
+
+}
+h1{
+   font-family: sans-serif;
 }
 .nav-bar{
     display: flex;
@@ -43,7 +46,7 @@
 
 
 .logo h1{
-    font-size: 2.3vh;
+    font-size: 2vh;
     font-weight: 900;
     color:  rgba(250, 250, 158, 0.768);
     font-family: 'Kanit', sans-serif;
@@ -81,7 +84,7 @@
     display: inline-block;
    
     padding: 20px;
-    font-size: 1.8vh;
+    font-size: 1.3vh;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     
     list-style: none ;
@@ -149,6 +152,76 @@
 
  /* main-body */
  .main-body{
-    height: 80vh;
-    padding:2vh 10vh 0 10vh;
+    min-height: 80vh;
+    padding:2vh 10vh 2vh 10vh;
+
+ }
+
+
+
+/* form */
+ #compose-form{
+   display: flex;
+   font-family: monospace;
+   flex-direction: column;
+   gap:1vh;
+   width: 90%;
+   height: 70%;
+   max-height: 90%;
+ }
+ #compose-form h1{
+   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   
+ }
+
+ #compose{
+   min-height: 40vh;
+   border: rgba(0, 0, 0, 0.343) solid 2px;
+   
+
+ }
+
+#title{
+   border: rgba(0, 0, 0, 0.343) solid 2px;
+}
+ #compose-form button{
+   border: solid rgba(0, 0, 0, 0) 1px;
+   color: black;
+   border-radius: 2px;
+   background-color: rgba(10, 158, 238, 0.856);
+   min-width: 60px;
+   max-width:90px ;
+   height: 40px;
+  
+
+ }
+
+
+
+ /* content */
+
+ .content{
+   display: flex;
+   flex-direction: column;
+   margin-top: 2vh;
+   min-width: 131px;
+   background-color: aliceblue;
+   gap:2vh;
+   padding: 2vh;
+   border-radius:3px ;
+   
+   
+ }
+
+ .content h2{
+   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   cursor: pointer;
+
+ }
+
+ .content p{
+   font-family:monospace, sans-serif;
+  
+   
+
  }
