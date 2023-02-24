@@ -2,12 +2,23 @@
     <body>
         <%- include('partials/navbar.ejs') %>
         <div class="main-body">
+            <span class="add">
+                <a href="/compose" ><p>Add</p></a>
+                
+            </span>
+            
+
+            
 
             <% content.forEach(function(post){ %>
                 <%console.log(content)%>
                 <div class="content"> 
                     <h2><%=post.title %></h2>
-                    <p><%= post.content %></p>
+                    <p><%=  post.content.substring(0,50) +"..."%></p>
+                    <span class="bottom-tag">
+                        <a href="<%= post.title %>" style="color: blue;text-decoration-line: none;">read more</a>
+                        <a style="cursor: pointer;" class="del"><i class="fa-solid fa-trash fa-1x"></i></a>
+                    </span>
                 </div>
        <% } )%> 
 

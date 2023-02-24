@@ -225,3 +225,50 @@ h1{
    
 
  }
+
+
+ /* add */
+ .add{
+   display: flex;
+   flex-direction: column;
+   gap: 1vh;
+  transition: all .5s;
+  
+   
+ }
+
+
+ .add a{
+   color: rgb(9, 9, 9);
+   text-decoration:none ;
+ }
+
+
+ .add p{
+   font-weight: 700;
+   font-size: larger;
+   font-family: monospace;
+   color: azure;
+   background-color: black;
+   width: fit-content;
+   padding: 10px;
+
+ }
+
+ .add:hover p{
+   background-color: rgba(190, 179, 179, 0.778);
+   width: fit-content;
+   color: black;
+ }
+
+ 
+ /* bottom-tag */
+ .bottom-tag{
+   display: flex;
+   justify-content: space-between;
+ }
+
+
+ .bottom-tag{
+   color: rgb(54, 54, 54);
+ }
