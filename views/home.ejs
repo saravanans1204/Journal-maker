@@ -11,13 +11,19 @@
             
 
             <% content.forEach(function(post){ %>
-                <%console.log(content)%>
                 <div class="content"> 
                     <h2><%=post.title %></h2>
                     <p><%=  post.content.substring(0,50) +"..."%></p>
                     <span class="bottom-tag">
                         <a href="<%= post.title %>" style="color: blue;text-decoration-line: none;">read more</a>
-                        <a style="cursor: pointer;" class="del"><i class="fa-solid fa-trash fa-1x"></i></a>
+
+                        <form method="post" action="/<%=post.title%>">
+                            <button type="submit"  style="border:0px ;" class="del"  >
+                                <i  class="fa-solid fa-trash fa-1x"></i>
+                            </button>
+                        </form>
+                        
+                        
                     </span> 
                 </div>
        <% } )%> 
