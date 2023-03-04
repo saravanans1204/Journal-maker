@@ -29,7 +29,7 @@ addEntries()
 
 // routers
 app.get('/',(req,res)=>{
-    res.render('home',{page:"Home",content:store})
+    res.render('home',{content:store})
     
 })
 
@@ -65,7 +65,7 @@ app.post('/compose',(req,res)=>{
         title:req.body.title,
         content:req.body.entry
     }
-    
+    createEntry(post.title,post.content)
     store.push(post)
     
     res.redirect('/')
