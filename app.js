@@ -33,10 +33,10 @@ app.get('/',(req,res)=>{
     
 })
 
-app.get('/contacts',(req,res)=>{
+// app.get('/contacts',(req,res)=>{
    
-    res.render('contact')
-})
+//     res.render('contact')
+// })
 
 app.get('/compose',(req,res)=>{
     res.render('compose')
@@ -45,15 +45,15 @@ app.get('/compose',(req,res)=>{
 app.get('/about',(req,res)=>{
      res.render('about')
 })
+
 app.get('/:id',(req,res)=>{
     const id=req.params.id
 
     store.forEach((e)=>{
        if(lo.lowerCase(e.title)===lo.lowerCase(id)){
         res.render('expandpage',{title:e.title,content:e.content})
-       }else{
-        res.render('error')
-       }
+    
+    }
     })
     
     
@@ -87,7 +87,7 @@ app.post('/:id',(req,res)=>{
 
 app.get('*', function(req, res){
     if(res.status(404)){
-        res.render('error')
+       return res.render('error')
     }
   });
 
