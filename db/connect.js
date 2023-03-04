@@ -1,7 +1,7 @@
 
 "use strict"
 require('dotenv').config();
-const URI=process.env.URI
+const URI=String(process.env.URI)
 
 
 const mongoose=require('mongoose');
