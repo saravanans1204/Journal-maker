@@ -1,7 +1,7 @@
 
 "use strict"
 require('dotenv').config();
-const URI="mongodb+srv://saran:1111@blog.g2cy5vt.mongodb.net/?retryWrites=true&w=majority"
+const URI=process.env.URI
 
 
 const mongoose=require('mongoose');
