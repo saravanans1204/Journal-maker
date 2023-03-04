@@ -2,9 +2,9 @@
 "use strict"
 require('dotenv').config();
 const URI=process.env.URI
-let firstEntry=undefined;
 
-const { query } = require('express');
+
+
 const mongoose=require('mongoose');
 const entrySchema=new mongoose.Schema({
     title:String,
