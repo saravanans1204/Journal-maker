@@ -272,3 +272,20 @@ h1{
  .bottom-tag{
    color: rgb(54, 54, 54);
  }
+
+
+ /* about */
+.about-content{
+  display: flex;
+  flex-direction: column;
+  gap:3vh ;
+  background-color: aliceblue;
+  padding: 4vh;
+}
+
+.about-content p{
+  font-family: monospace,sans-serif;
+  font-size: 1.5vh;
+  line-height: 2vh;
+}
+ 
