@@ -13,7 +13,13 @@ const entrySchema=new mongoose.Schema({
 
     }
 })
-const  Entry=mongoose.model('Entry',entrySchema)
+
+
+const createInstance=(users)=>{
+    const  Entry=mongoose.model(users,entrySchema)
+    return Entry
+}
+
 
 
 const connection= async ()=>{
@@ -26,10 +32,10 @@ const connection= async ()=>{
     }
 }
 
-const createEntry=async (title="Marcus Aurelius",content=`You have power over your mind  not outside events. Realize this, and you will find strength`)=>{
+const createEntry=async (title="Marcus Aurelius",content=`You have power over your mind  not outside events. Realize this, and you will find strength`,entry)=>{
     
 
-        return Entry.create({
+        return entry.create({
             title:title,
             content: content
         })
@@ -51,7 +57,7 @@ connection()
 
 
 
-module.exports.Entry=Entry;
+module.exports.createInstance=createInstance;
 module.exports.createEntry=createEntry;
 
 

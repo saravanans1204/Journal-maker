@@ -3,7 +3,7 @@ const express=require('express');
 const lo=require('lodash');
 const app=express();
 const PORT=process.env.PORT || 9000
-const {Entry}=require('./db/connect.js');
+const {createInstance}=require('./db/connect.js');
 const {createEntry}=require('./db/connect.js')
 
 // express functions
@@ -16,9 +16,9 @@ app.set('view engine','ejs');
 app.set('views',(__dirname+'/views'));
 
 let store=undefined;
-
+const Db=createInstance('user1')
 const addEntries=async ()=>{
-    const initalEntry=await Entry.find().exec()
+    const initalEntry=await Db.find().exec()
     store=initalEntry
     // console.log(store)
 
@@ -65,7 +65,7 @@ app.post('/compose',(req,res)=>{
         title:req.body.title,
         content:req.body.entry
     }
-    createEntry(post.title,post.content)
+    createEntry(post.title,post.content,Db)
     store.push(post)
     
     res.redirect('/')
@@ -76,7 +76,7 @@ app.post('/:id',(req,res)=>{
     const {id} = req.params
 
     const deleteStore=store.findIndex(post=>post.title==id)
-    Entry.deleteOne({title:id}).exec()
+    Db.deleteOne({title:id}).exec()
 
     store.splice(deleteStore,1)
 
