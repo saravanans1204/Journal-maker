@@ -2,11 +2,20 @@
     <body>
         <%- include('partials/navbar.ejs') %>
         <div class="main-body">
-            <span class="add">
-                <a href="/compose" ><p>Add</p></a>
+             
                 
-            </span>
+               
             
+                <% if(isLogin){ %>  
+                    <span class="add">
+                        <a href="/compose" ><p>Add</p></a>
+                        
+                        </span>
+                <% } %>
+                
+                <% if(isLogin===false){ %>  
+                    <p style="font-family:'Courier New', Courier, monospace;font-size: 2vh;">login to use the app</p>
+                <% } %>
 
             
 

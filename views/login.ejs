@@ -1,0 +1,28 @@
+<%- include('partials/header.ejs') %>
+    <body>
+        <%- include('partials/navbar.ejs') %>
+        <div class="main-body login">
+            <div class="login-content content">
+                <form action="/compose" method="post" id="compose-form">
+                <h1>Login</h1>
+                <label for="username" ><h3>Username</h3></label>
+                    <input name="username" 
+                    id="username" required/>
+                    <label for="password" ><h3>Password</h3></label>
+                    <input type="password" id="password"
+                    required></input>
+                    <button type="submit" >
+                        Login</button>
+                </form>
+            </div>
+            <p style="font-family:sans-serif;font-size: 1.5vh;">if not signed up ? <a href="/signup">signUp</a></p>
+        </div>
+        
+        <%- include('partials/footer') %>
+
+
+
+        <!-- Scripts -->
+        <script src="" async defer></script>
+    </body>
+</html>

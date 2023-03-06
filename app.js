@@ -14,9 +14,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.set('view engine','ejs');
 app.set('views',(__dirname+'/views'));
-
+let isLogin=false;
 let store=undefined;
-const Db=createInstance('user1')
+const Db=createInstance('common')
+
 const addEntries=async ()=>{
     const initalEntry=await Db.find().exec()
     store=initalEntry
@@ -29,7 +30,7 @@ addEntries()
 
 // routers
 app.get('/',(req,res)=>{
-    res.render('home',{content:store})
+    res.render('home',{content:store,isLogin:isLogin})
     
 })
 
@@ -45,6 +46,17 @@ app.get('/compose',(req,res)=>{
 app.get('/about',(req,res)=>{
      res.render('about')
 })
+
+
+app.get('/login',(req,res)=>{
+    res.render('login')
+})
+
+app.get('/signup',(req,res)=>{
+    res.render('signup')
+})
+
+
 
 app.get('/:id',(req,res)=>{
     const id=req.params.id
@@ -65,7 +77,7 @@ app.post('/compose',(req,res)=>{
         title:req.body.title,
         content:req.body.entry
     }
-    createEntry(post.title,post.content,Db)
+    createEntry(Db,post.title,post.content)
     store.push(post)
     
     res.redirect('/')
