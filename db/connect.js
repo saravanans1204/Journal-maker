@@ -15,8 +15,8 @@ const entrySchema=new mongoose.Schema({
 })
 
 
-const createInstance=(users,dbSchema=entrySchema)=>{
-    const  Entry=mongoose.model(users,dbSchema)
+const createInstance=(conn,users,dbSchema=entrySchema)=>{
+    const  Entry=conn.model(users,dbSchema)
     return Entry
 }
 
@@ -43,15 +43,6 @@ const createEntry=async (entry,title="Marcus Aurelius",content=`You have power o
 
 
 
-function deleteSingle(query){
-    try{
-        connection()
-        Entry.deleteOne(query).exec()
-    }catch(err){
-        console.log(err)
-    }
-
-}
 
 
 

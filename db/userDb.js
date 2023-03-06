@@ -6,6 +6,7 @@ const {createInstance,connection}=require('./connect.js');
 
 
 const loginSchema=new mongoose.Schema({
+    displayName:String,
     username:String,
     password:{
         type:String,
@@ -15,8 +16,8 @@ const loginSchema=new mongoose.Schema({
 })
 
 
-connection(URI)
-const loginDb=createInstance(URI,loginSchema)
+const connectionOne=mongoose.createConnection(URI)
+const loginDb=createInstance(connectionOne,'users',loginSchema)
 
 
 module.exports.loginDb=loginDb;

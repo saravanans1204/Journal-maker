@@ -24,7 +24,7 @@ app.set('views',(__dirname+'/views'));
 let isLogin=false;
 let dataDb
 let loginDetails;
-let store=undefined;
+let store=[{title:'Marcus Aurelius',content:'You have power over your mind not outside events. Realize this, and you will find strength'}];
 
 
 const addEntries=async (Db)=>{
@@ -39,9 +39,9 @@ const addEntries=async (Db)=>{
 
 // routers
 app.get('/',(req,res)=>{
-    mongoose.connect(entryUri)
-    connection(entryUri)
-    const data =createInstance('common')
+    
+    const connectionTwo=mongoose.createConnection(entryUri)
+    const data =createInstance(connectionTwo,'common')
     addEntries(data)
     res.render('home',{content:store,isLogin:isLogin})
     
@@ -100,11 +100,27 @@ app.post('/login',(req,res)=>{
    
     
     loginDetails=req.body
-    loginDb.find(loginDetails).then((res,rej)=>{
-        console.log(res)
+    console.log(loginDetails)
+    loginDb.findOne(loginDetails).then((resolve,reject)=>{
+        console.log(resolve)
+        if(resolve!==null){
+            isLogin=true
+        }
     })
     res.redirect('/')
 })
+
+
+
+app.post('/signup',(req,res)=>{
+   
+    
+   const  signUpDetails=req.body
+   loginDb.create(signUpDetails)
+    console.log(signUpDetails)
+    res.redirect('/login')
+})
+
 
 app.post('/:id',(req,res)=>{
     const {id} = req.params
