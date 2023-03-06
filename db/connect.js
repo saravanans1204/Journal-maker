@@ -1,10 +1,10 @@
 
 "use strict"
-require('dotenv').config();
-const URI=String(process.env.URI)
+
 
 
 const mongoose=require('mongoose');
+
 const entrySchema=new mongoose.Schema({
     title:String,
     content:{
@@ -15,16 +15,16 @@ const entrySchema=new mongoose.Schema({
 })
 
 
-const createInstance=(users)=>{
-    const  Entry=mongoose.model(users,entrySchema)
+const createInstance=(users,dbSchema=entrySchema)=>{
+    const  Entry=mongoose.model(users,dbSchema)
     return Entry
 }
 
 
 
-const connection= async ()=>{
+const connection= async (uri)=>{
     try{
-        await mongoose.connect(URI)
+        mongoose.connect(uri)
 
 
     }catch(err){
@@ -53,11 +53,11 @@ function deleteSingle(query){
 
 }
 
-connection()
 
 
 
 
+module.exports.connection=connection
 module.exports.createInstance=createInstance;
 module.exports.createEntry=createEntry;
 

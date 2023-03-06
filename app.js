@@ -1,11 +1,18 @@
-const express=require('express');
+require('dotenv').config();
 
+
+const express=require('express');
+const mongoose=require('mongoose')
+const mongoPassword=process.env.password;
 const lo=require('lodash');
 const app=express();
 const PORT=process.env.PORT || 9000
-const {createInstance}=require('./db/connect.js');
-const {createEntry}=require('./db/connect.js')
+const {createInstance,connection}=require('./db/connect.js');
+const {createEntry}=require('./db/connect.js');
+const { loginDb } = require('./db/userDb.js');
 
+const entryUri=`mongodb+srv://saran:${mongoPassword}@blog.g2cy5vt.mongodb.net/JournalDb?retryWrites=true&w=majority`
+// const {loginDb}=require("./db/userDb.js")
 // express functions
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -15,21 +22,27 @@ app.use(express.static('public'));
 app.set('view engine','ejs');
 app.set('views',(__dirname+'/views'));
 let isLogin=false;
+let dataDb
+let loginDetails;
 let store=undefined;
-const Db=createInstance('common')
 
-const addEntries=async ()=>{
+
+const addEntries=async (Db)=>{
     const initalEntry=await Db.find().exec()
     store=initalEntry
     // console.log(store)
 
 }
 
-addEntries()
+
 
 
 // routers
 app.get('/',(req,res)=>{
+    mongoose.connect(entryUri)
+    connection(entryUri)
+    const data =createInstance('common')
+    addEntries(data)
     res.render('home',{content:store,isLogin:isLogin})
     
 })
@@ -77,12 +90,21 @@ app.post('/compose',(req,res)=>{
         title:req.body.title,
         content:req.body.entry
     }
-    createEntry(Db,post.title,post.content)
+    createEntry(dataDb,post.title,post.content)
     store.push(post)
     
     res.redirect('/')
 })
 
+app.post('/login',(req,res)=>{
+   
+    
+    loginDetails=req.body
+    loginDb.find(loginDetails).then((res,rej)=>{
+        console.log(res)
+    })
+    res.redirect('/')
+})
 
 app.post('/:id',(req,res)=>{
     const {id} = req.params
@@ -96,6 +118,9 @@ app.post('/:id',(req,res)=>{
 
 
 })
+
+
+
 
 app.get('*', function(req, res){
     if(res.status(404)){

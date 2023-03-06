@@ -3,13 +3,13 @@
         <%- include('partials/navbar.ejs') %>
         <div class="main-body login">
             <div class="login-content content">
-                <form action="/compose" method="post" id="compose-form">
+                <form action="/login" method="post" id="compose-form">
                 <h1>Login</h1>
                 <label for="username" ><h3>Username</h3></label>
                     <input name="username" 
                     id="username" required/>
                     <label for="password" ><h3>Password</h3></label>
-                    <input type="password" id="password"
+                    <input type="password" name="password" id="password"
                     required></input>
                     <button type="submit" >
                         Login</button>
