@@ -15,10 +15,10 @@
                     <input type="password" id="password" name="password"
                     required></input>
                     <button type="submit" >
-                        Login</button>
+                        signUp</button>
                 </form>
             </div>
-            <p style="font-family:sans-serif;font-size: 1.5vh;">if signed up ? <a href="/login">signUp</a></p>
+            <p style="font-family:sans-serif;font-size: 1.5vh;">if signed up ? <a href="/login">login</a></p>
         </div>
         
         <%- include('partials/footer') %>
@@ -26,6 +26,12 @@
 
 
         <!-- Scripts -->
+        <script>
+            document.querySelector('#ham')
+            .addEventListener('click',(e)=>{
+                document.querySelector('.nav-menu').classList.toggle('hover-menu')
+              }); 
+          </script>
         <script src="" async defer></script>
     </body>
 </html>

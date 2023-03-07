@@ -20,7 +20,7 @@ h1{
     justify-content: space-between;
     align-items: center;
     background-color:  #101010f3;
-    height: 120px;
+    height: 100px;
     width: 100%;
     border-bottom: solid rgba(117, 112, 112, 0) 2px;
    
@@ -304,5 +304,61 @@ h1{
 
 .login-content{
   padding:3vh ;
-  width: 30%;
+  width: 40%;
+}
+
+
+/* dropdown */
+.dropdown{
+  display: none;
+  transition: all 1s;
+}
+
+.dropdown:hover{
+  display: block;
+}
+
+
+
+/* ham */
+#ham{
+  display: none;
+}
+
+#ham-id{
+  vertical-align: bottom;
+  display: none;
+}
+.ham-menu{
+  display: none;
+}
+
+@media(max-width:1000px){
+  .ham-menu{
+    display: none;
+    display: block;
+    margin-right:3vh ;
+  }
+  #ham-id{
+    display: block;
+  }
+
+  .nav-menu{
+    display: none;
+    position: absolute;
+    right: 0px;
+    top:100px;
+    background-color: rgb(61, 61, 61);
+  }
+  .nav-menu li{
+    display: block;
+  }
+
+  .hover-menu{
+    display: block;
+  }
+
+  .login-content{
+    width: 100%;
+  }
 }

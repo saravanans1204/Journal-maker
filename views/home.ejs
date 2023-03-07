@@ -22,7 +22,7 @@
             <% content.forEach(function(post){ %>
                 <div class="content"> 
                     <h2><%=post.title %></h2>
-                    <p><%=  post.content.substring(0,50)+"..."%></p>
+                    <p><%=  post.content %></p>
                     <span class="bottom-tag">
                         <a href="<%= post.title %>" style="color: blue;text-decoration-line: none;">read more</a>
 
@@ -52,6 +52,12 @@
 
 
         <!-- Scripts -->
+        <script>
+            document.querySelector('#ham')
+            .addEventListener('click',(e)=>{
+                document.querySelector('.nav-menu').classList.toggle('hover-menu')
+              }); 
+          </script>
         <script src="" async defer></script>
     </body>
 </html>

@@ -1,8 +1,8 @@
-<%- include('partials/header.ejs') %>
+<%- include('../partials/header.ejs') %>
     <body>
-        <%- include('partials/navbar.ejs') %>
-        <div class="main-body login">
-            <div class="login-content content">
+        <%- include('../partials/navbar.ejs') %>
+        <div class="main-body login" >
+            <div class="login-content content" style="opacity: 60%;">
                 <form action="/login" method="post" id="compose-form">
                 <h1>Login</h1>
                 <label for="username" ><h3>Username</h3></label>
@@ -15,11 +15,11 @@
                         Login</button>
                 </form>
             </div>
-            <p style="font-family:sans-serif;font-size: 1.5vh;">
-                if not signed up ? <a href="/signup">signUp</a></p>
+            <p style="font-family:sans-serif;font-size: 1.5vh;color: red;">
+                no user found. <a href="/signup">signUp</a></p>
         </div>
         
-        <%- include('partials/footer') %>
+        <%- include('../partials/footer') %>
 
 
 
@@ -28,8 +28,8 @@
             document.querySelector('#ham')
             .addEventListener('click',(e)=>{
                 document.querySelector('.nav-menu').classList.toggle('hover-menu')
-            }); 
-        </script>
+              }); 
+          </script>
         <script src="" async defer></script>
     </body>
 </html>
