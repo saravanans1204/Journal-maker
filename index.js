@@ -162,11 +162,14 @@ app.post('/signup',(req,res)=>{
 })
 
 
-app.post('/:id',(req,res)=>{
+app.post('/:id',async (req,res)=>{
     const {id} = req.params
-
-    const deleteStore=store.findIndex(post=>post.title==id)
-    dataDb.deleteOne({title:id}).exec()
+   
+    const deleteStore=store.findIndex(post=>lo.camelCase(post.title)==lo.camelCase(id))
+    // console.log(id)
+    // console.log(store)
+    // console.log(deleteStore)
+    await dataDb.deleteOne({title:id})
 
     store.splice(deleteStore,1)
 
