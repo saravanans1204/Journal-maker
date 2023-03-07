@@ -1,0 +1,38 @@
+<%- include('../partials/header.ejs') %>
+    <body>
+        <%- include('../partials/navbar.ejs') %>
+        <div class="main-body login">
+            <div class="login-content content">
+                <form action="/signup" method="post" id="compose-form">
+                <h1>Register</h1>
+                <label for="displayname" ><h3>Display name</h3></label>
+                    <input name="displayname" 
+                    id="displayname" required/>
+                <label for="username" ><h3>Username</h3></label>
+                    <input name="username" 
+                    id="username" required/>
+                    <label for="password" ><h3>Password</h3></label>
+                    <input type="password" id="password" name="password"
+                    required></input>
+                    <button type="submit" >
+                        signUp</button>
+                </form>
+            </div>
+            <p style="font-family:sans-serif;font-size: 1.5vh;color: red;">USER EXIST! retry </p>
+            <p style="font-family:sans-serif;font-size: 1.5vh;">if signed up ? <a href="/login">login</a></p>
+        </div>
+        
+        <%- include('../partials/footer') %>
+
+
+
+        <!-- Scripts -->
+        <script>
+            document.querySelector('#ham')
+            .addEventListener('click',(e)=>{
+                document.querySelector('.nav-menu').classList.toggle('hover-menu')
+            }); 
+        </script>
+        <script src="" async defer></script>
+    </body>
+</html>
