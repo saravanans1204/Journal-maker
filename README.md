@@ -3,7 +3,7 @@
 a simple note making app (serverside app)
 
 
-you have register and login to use this app
+you have to register and login to use this app
 
 functionality:
 1)Add(you can compose a title and content and add it to your log)
